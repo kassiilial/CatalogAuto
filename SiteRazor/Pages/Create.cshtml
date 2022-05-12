@@ -1,0 +1,65 @@
+@page
+@model CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Car.Brand" class="control-label"></label>
+                <select asp-for="Car.Brand.BrandName" class="form-control"
+                        asp-items="@Model.CarBrandNames">
+                    <option value="">--Choose a Brand--</option>
+                </select>             
+                <span asp-validation-for="Car.BodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.ModelName" class="control-label"></label>
+                <input asp-for="Car.ModelName" class="form-control" />
+                <span asp-validation-for="Car.ModelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.BodyType" class="control-label"></label>
+                <select asp-for="Car.BodyType.BodyTypeName" class="form-control"
+                        asp-items="@Model.CarBodyTypeNames">
+                    <option value="">--Choose a Body Type--</option>
+                </select>             
+                <span asp-validation-for="Car.BodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.SeatsCount" class="control-label"></label>
+                <input asp-for="Car.SeatsCount" class="form-control" />
+                <span asp-validation-for="Car.SeatsCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Url" class="control-label"></label>
+                <input asp-for="Car.Url" class="form-control" />
+                <span asp-validation-for="Car.Url" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Car.Image" class="control-label"></label>
+                <input type="file" name="uploadedFile" />
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

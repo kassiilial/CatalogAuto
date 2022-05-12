@@ -1,0 +1,69 @@
+@page
+@model EditModel
+
+@{
+    
+}
+
+<h1>Edite</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CarTo.Brand" class="control-label"></label>
+                <select asp-for="CarTo.Brand.BrandName" class="form-control"
+                        asp-items="@Model.CarBrandNames">
+                </select>             
+                <span asp-validation-for="CarTo.BodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.ModelName" class="control-label"></label>
+                <input asp-for="CarTo.ModelName" class="form-control" value="@Model.CarFrom.ModelName" />
+                <span asp-validation-for="CarTo.ModelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.Image" class="control-label"></label>
+                <input asp-for="CarTo.Image" class="form-control" value="@Model.CarFrom.Image" />
+                <span asp-validation-for="CarTo.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.CreatedData" class="control-label"></label>
+                <input readonly asp-for="CarTo.CreatedData" class="form-control" value="@Model.CarTo.CreatedData" />
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.BodyType" class="control-label"></label>
+                <select asp-for="CarTo.BodyType.BodyTypeName" class="form-control"
+                        asp-items="@Model.CarBodyTypeNames">
+                </select>             
+                <span asp-validation-for="CarTo.BodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.SeatsCount" class="control-label"></label>
+                <input asp-for="CarTo.SeatsCount" class="form-control" value="@Model.CarFrom.SeatsCount" />
+                <span asp-validation-for="CarTo.SeatsCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarTo.Url" class="control-label"></label>
+                <input asp-for="CarTo.Url" class="form-control" value="@Model.CarFrom.Url" />
+                <span asp-validation-for="CarTo.Url" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<p><img alt="Изображение машины" src="@Model.CarFrom.Image"></p>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
